@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from app.db.database import Base
 
 class User(Base):
@@ -9,3 +10,5 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     goal = Column(String, nullable=False)
     daily_calories = Column(Integer, nullable=False)
+
+    meals = relationship("Meal", back_populates="owner")
